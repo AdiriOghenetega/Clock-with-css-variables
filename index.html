@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock with blur</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="clock">
+      
+        <div class="clockface">
+            <div class="hand hourhand"></div>
+            <div class="hand minhand"></div>
+            <div class="hand sechand"></div>
+          </div>
+    </div>
+
+    <p id="demo"></p>
+
+    <label for="blur" >Blur:</label>
+    <input type="range" name="blur" max="20" min="0" value="0" data-sizing="px" />
+    <label for="spacing">Spacing:</label>
+    <input type="range" name="spacing"max="20" min="0" value="0" data-sizing="px" />
+    <label for="color">Color:</label>
+    <input type="color" name="color" value="#64FF61" />
+    
+    <script>
+        const secHand = document.querySelector(".sechand");
+       const minHand = document.querySelector(".minhand");
+       const hourHand = document.querySelector(".hourhand");
+
+        function startClock(){
+            const now =new Date();
+            mySeconds = now.getSeconds() ;
+            mySecondsDeg = ((360/60) * mySeconds)+ 90;
+            secHand.style.transform = `rotate(${mySecondsDeg}deg)`
+
+            myMin = now.getMinutes() ;
+            myMinDeg = ((360/60) * myMin)+ 90;
+            minHand.style.transform = `rotate(${myMinDeg}deg)`;
+
+            myHour = now.getHours() ;
+            myHourDeg = ((360/60) * myHour)+ 90;
+            hourHand.style.transform = `rotate(${myHourDeg}deg)`;
+        }
+        setInterval(startClock,1000);
+
+       const myControls = document.querySelectorAll('input');
+
+       function updateControl(){
+           const suffice = this.dataset.sizing || " ";
+           document.documentElement.style.setProperty(`--${this.name}`,this.value + suffice);
+
+           console.log(this.value);
+       }
+
+       myControls.forEach(input=> input.addEventListener("change",updateControl));
+       myControls.forEach(input=> input.addEventListener("mousemove",updateControl));
+
+    </script>
+  </body>
+</html>

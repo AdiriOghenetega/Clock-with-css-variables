@@ -1,0 +1,40 @@
+:root{
+    --blur: 0px;
+    --spacing: 10px;
+    --color: #64FF61;
+
+}
+
+html{
+    background-image: url(./mike-ko-tjod6u2RpiU-unsplash.jpg);
+}
+
+.clock{
+    border: var(--spacing) solid var(--color);
+    border-radius: 50%;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+}
+.clockface{
+    width: 100%;
+    background-image: url(./mike-ko-tjod6u2RpiU-unsplash.jpg);
+    position: relative;
+    height: 100%;
+    border-radius: 50%;
+    filter: blur(var(--blur));
+}
+.hand{
+    position: absolute;
+    top: 50%;
+    background-color: var(--color);
+    width: 50%;
+    height: 6px;
+    transform: rotate(90deg);
+    transform-origin: 100%;
+    transition: all 0.05;
+}
+label{
+    color: white;
+}
