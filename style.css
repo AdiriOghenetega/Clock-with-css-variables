@@ -8,13 +8,18 @@
 html{
     background-image: url(./mike-ko-tjod6u2RpiU-unsplash.jpg);
 }
-
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
 .clock{
     border: var(--spacing) solid var(--color);
     border-radius: 50%;
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     margin: auto;
 }
 .clockface{
@@ -24,17 +29,51 @@ html{
     height: 100%;
     border-radius: 50%;
     filter: blur(var(--blur));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 }
 .hand{
     position: absolute;
-    top: 50%;
     background-color: var(--color);
     width: 50%;
     height: 6px;
     transform: rotate(90deg);
     transform-origin: 100%;
     transition: all 0.05;
+    border-radius: 50% 50% 50% 50%;
+}
+.minhand{
+    width: 42%;
+    margin-left: 8%;
+    
+}
+.hourhand{
+    width: 30%;
+    margin-left: 20%;
+}
+.sechand{
+    width: 48%;
+    margin-left: 2%;
+    height: 2px;
 }
 label{
     color: white;
+}
+#demo{
+    color: white;
+}
+
+@media screen and (max-width: 600px) {
+    .clock{
+        width: 300px;
+        height: 300px;
+    }
+}
+@media screen and (max-width: 425px){
+    .clock{
+        width: 200px;
+        height: 200px;
+    }
 }
